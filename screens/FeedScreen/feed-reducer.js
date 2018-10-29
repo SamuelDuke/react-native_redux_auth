@@ -13,9 +13,6 @@ export default (state = initailState, action) => {
         case FEED_GETFEED + ActionOutcomes.fulfilled:
             return action.payload.data;
 
-
-
-
         default:
             return {...state};
     }

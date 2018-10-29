@@ -4,9 +4,10 @@ import {FEED_GETFEED, performRequest} from "../../actions/constants";
 
 export function getFeed(token, values) {
 
-    const request = performRequest('get', '/experience', values, token)
+    const request = performRequest('get', '/experience/all', values, token)
         .then(
             (res) => {
+                //console.log(res.data);
                 return res.data;
             }
         ).catch(error => {

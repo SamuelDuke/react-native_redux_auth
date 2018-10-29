@@ -30,6 +30,7 @@ class AddScreen extends React.Component {
                 >
                     Welcome to our App!
                 </Text>
+                <Text>Token: {this.props.token}</Text>
 
                 <FormTextInput
                     label='Title: '
@@ -54,6 +55,7 @@ class AddScreen extends React.Component {
         );
     }
     _loginAsync = async () => {
+        console.log(this.state.title, this.state.description);
         await this.props.addExp(this.props.token, {title: this.state.title, description: this.state.description});
         this.props.navigation.navigate('Feed');
     }
@@ -74,12 +76,6 @@ const styles = StyleSheet.create({
     },
 });
 
-// function mapStateToProps(state) {
-//     return {
-//         token: state.loggedIn.token
-//     }
-// }
-
 function mapStateToProps(state) {
     return {
         user: state.user.user,
@@ -91,4 +87,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({ addExp }, dispatch);
 }
 
-export default connect(null, matchDispatchToProps)(AddScreen);
+export default connect(mapStateToProps, matchDispatchToProps)(AddScreen);

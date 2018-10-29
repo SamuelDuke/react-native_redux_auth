@@ -38,6 +38,7 @@ export const performRequest = (method, url, params, auth) => {
         [body]: params || {}
     };
     if (auth) {
+        console.log('performReq auth:', auth);
         config.baseURL = API_URL;
         // console.log('Auth is true, config.base url = ', config.baseURL, url);
 
@@ -45,6 +46,8 @@ export const performRequest = (method, url, params, auth) => {
             Authorization: auth
         }
     }
+
+    console.log('config: ', config);
 
     return axios.request(config)
 };
